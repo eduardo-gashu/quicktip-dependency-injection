@@ -1,11 +1,11 @@
 package quicktip
 
 class Mailer {
-    private val mailSender: MailSenderExternalLib = MailSenderExternalLib()
+    private val mailSender: IMailSender = MailSenderImplementation()
 
     fun welcome(name: String, email: String): Boolean {
         return try {
-            this.mailSender.send(name, email, "Welcome")
+            this.mailSender.sendMail(name, email, "Welcome")
             true
         } catch (e:Exception){
             throw Exception("Failed to send Welcome")
