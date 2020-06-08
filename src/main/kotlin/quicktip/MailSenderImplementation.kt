@@ -1,9 +1,8 @@
 package quicktip
 
 class MailSenderImplementation: IMailSender {
-    // val mailSender = MailSenderExternalLib()
+    private val mailSender = MailSenderExternalLib()
     override fun sendMail(name: String, email: String, message: String) {
-        // mailSender.sendMail(...)
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mailSender.sendMail(name, email, message)
     }
 }
