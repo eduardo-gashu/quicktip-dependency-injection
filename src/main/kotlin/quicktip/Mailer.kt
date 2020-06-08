@@ -1,8 +1,8 @@
 package quicktip
 
-class Mailer {
-    private val mailSender: IMailSender = MailSenderImplementation()
-
+class Mailer (
+    private val mailSender: IMailSender
+) {
     fun welcome(name: String, email: String): Boolean {
         return try {
             this.mailSender.sendMail(name, email, "Welcome")

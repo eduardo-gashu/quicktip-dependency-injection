@@ -6,7 +6,8 @@ class WelcomeTest {
     @Test
     fun `it sends a welcome email` () {
         //setup
-        val mailer = Mailer()
+        val fakeMailSender = FakeMailSender()
+        val mailer = Mailer(fakeMailSender)
         val name = "Nome"
         val email = "email@email.com"
 
@@ -15,5 +16,10 @@ class WelcomeTest {
 
         //assertion
         assert(result)
+    }
+    class FakeMailSender: IMailSender {
+        override fun sendMail(name: String, email: String, message: String) {
+            println("Fake Mail Sender")
+        }
     }
 }
